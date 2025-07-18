@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { Link } from 'react-router';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 
-export default function Header({ onHomeClick, onMapsClick, onListsClick }) {
+export default function Header() {
   return (
-    <AppBar 
-      position="fixed" 
+    <AppBar
+      position="fixed"
       sx={{
         top: 16,
         left: '50%',
@@ -18,25 +18,26 @@ export default function Header({ onHomeClick, onMapsClick, onListsClick }) {
       }}
     >
       <Toolbar>
-        <Button 
-          onClick={onHomeClick} 
+        <Button
+          component={Link}
+          to="/"
           sx={{ textTransform: 'none', p: 0, '&:hover': { backgroundColor: 'transparent' } }}
         >
-          <Typography 
-            variant="h6" 
-            component="div" 
-            sx={{ 
-              fontWeight: 'bold', 
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{
+              fontWeight: 'bold',
               color: 'text.primary'
             }}
           >
-            Pinpoint 📍
+            Pinpoint
           </Typography>
         </Button>
 
         <Box sx={{ flexGrow: 1 }} />
-        <Button onClick={onMapsClick} sx={{ color: 'text.primary' }}>Maps</Button>
-        <Button onClick={onListsClick} sx={{ color: 'text.primary' }}>My Lists</Button>
+        <Button component={Link} to="/maps" sx={{ color: 'text.primary' }}>Maps</Button>
+        <Button component={Link} to="/lists" sx={{ color: 'text.primary' }}>My Lists</Button>
       </Toolbar>
     </AppBar>
   );

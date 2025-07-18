@@ -1,8 +1,8 @@
 import { Box, Typography, Button } from '@mui/material';
 import mapVideo from '../assets/map.mp4';
-import { useState } from 'react';
+import { Link } from 'react-router';
 
-export default function MainPage({ onStartClick }) {
+export default function MainPage() {
   return (
     <Box
       sx={{
@@ -28,7 +28,7 @@ export default function MainPage({ onStartClick }) {
           zIndex: -1,
           top: 0,
           left: 0,
-          filter: 'blur(4px)',
+          filter: 'blur(8px)',
         }}
       >
         <source src={mapVideo} type="video/mp4" />
@@ -86,7 +86,8 @@ export default function MainPage({ onStartClick }) {
         <Button
           variant="contained"
           size="large"
-          onClick={onStartClick}
+          component={Link}
+          to="/maps"
           sx={{
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
             color: 'rgb(0, 0, 0)',

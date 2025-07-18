@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+
 import Header from './components/Header';
 import MainPage from './components/MainPage';
-import Maps from './components/Maps';
+import Maps from './components/maps/Maps';
 import MyLists from './components/MyLists';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const handleGoHome = () => setCurrentPage('home');
-  const handleGoToMap = () => setCurrentPage('maps');
-  const handleGoToLists = () => setCurrentPage('lists');
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'maps':
-        return <Maps />;
-      case 'lists':
-        return <MyLists />;
-      case 'home':
-      default:
-        return <MainPage onStartClick={handleGoToMap} />;
-    }
-  };
-
   return (
-    <div>
-      <Header 
-        onHomeClick={handleGoHome} 
-        onMapsClick={handleGoToMap}
-        onListsClick={handleGoToLists}
-      />
-      
-      {renderPage()}
-    </div>
+    <BrowserRouter basename="/p0">
+      <Header />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+
+        <Route path="/maps" element={<Maps />} />
+
+        <Route path="/lists" element={<MyLists />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
