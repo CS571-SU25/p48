@@ -58,7 +58,7 @@ export default function MainPage({ onStartClick }) {
           p: 3,
         }}
       >
-        <Box
+        {/* <Box
           component="img"
           sx={{
             width: 'clamp(180px, 40vw, 300px)',
@@ -67,7 +67,7 @@ export default function MainPage({ onStartClick }) {
           }}
           alt="Pinpoint Logo"
           src="https://placehold.co/400x400/FFFFFF/000000?text=Pinpoint%0ALogo&font=raleway"
-        />
+        /> */}
 
         <Box sx={{ mb: 4 }}>
           <Typography

@@ -1,36 +1,39 @@
-import { useState } from 'react'
-import './App.css'
-import { Box } from '@mui/material'
-
-import Header from './components/Header'
-import MainPage from './components/MainPage'
-import Maps from './components/Maps'
+import React, { useState } from 'react';
+import Header from './components/Header';
+import MainPage from './components/MainPage';
+import Maps from './components/Maps';
+import MyLists from './components/MyLists';
 
 function App() {
-  const [showMap, setShowMap] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
-  const handleHomeClick = () => {
-    setShowMap(false);
-  };
+  const handleGoHome = () => setCurrentPage('home');
+  const handleGoToMap = () => setCurrentPage('maps');
+  const handleGoToLists = () => setCurrentPage('lists');
 
-  const handleMapsClick = () => {
-    setShowMap(true);
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'maps':
+        return <Maps />;
+      case 'lists':
+        return <MyLists />;
+      case 'home':
+      default:
+        return <MainPage onStartClick={handleGoToMap} />;
+    }
   };
 
   return (
-    <Box>
+    <div>
       <Header 
-        onHomeClick={handleHomeClick} 
-        onMapsClick={handleMapsClick}
+        onHomeClick={handleGoHome} 
+        onMapsClick={handleGoToMap}
+        onListsClick={handleGoToLists}
       />
-
-      {showMap ? (
-        <Maps />
-      ) : (
-        <MainPage onStartClick={handleMapsClick} />
-      )}
-    </Box>
-  )
+      
+      {renderPage()}
+    </div>
+  );
 }
 
-export default App
+export default App;

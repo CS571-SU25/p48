@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 
-export default function Header({ onHomeClick, onMapsClick }) {
+export default function Header({ onHomeClick, onMapsClick, onListsClick }) {
   return (
     <AppBar 
       position="fixed" 
@@ -36,7 +36,7 @@ export default function Header({ onHomeClick, onMapsClick }) {
 
         <Box sx={{ flexGrow: 1 }} />
         <Button onClick={onMapsClick} sx={{ color: 'text.primary' }}>Maps</Button>
-        <Button sx={{ color: 'text.primary' }}>My Lists</Button>
+        <Button onClick={onListsClick} sx={{ color: 'text.primary' }}>My Lists</Button>
       </Toolbar>
     </AppBar>
   );
