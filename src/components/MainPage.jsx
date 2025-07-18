@@ -20,6 +20,7 @@ export default function MainPage() {
         autoPlay
         loop
         muted
+        playsInline
         style={{
           position: 'absolute',
           width: '100%',
@@ -28,7 +29,7 @@ export default function MainPage() {
           zIndex: -1,
           top: 0,
           left: 0,
-          filter: 'blur(8px)',
+          filter: 'blur(6px)',
         }}
       >
         <source src={mapVideo} type="video/mp4" />
