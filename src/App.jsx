@@ -7,8 +7,10 @@ import Maps from './components/maps/Maps';
 import MyLists from './components/MyLists';
 
 function App() {
+  const basename = import.meta.env.BASE_URL;
+
   return (
-    <BrowserRouter basename="/p0">
+    <BrowserRouter basename={basename}>
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
