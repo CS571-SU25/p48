@@ -30,8 +30,7 @@ export default function ShareButton({ place }) {
 
   const handleGoogleMapsSearch = () => {
     const searchTerm = place.address ? `${place.name}, ${place.address}` : `${place.name}, Madison, WI`;
-    const encodedSearchTerm = encodeURIComponent(searchTerm);
-    window.open(`https://www.google.com/maps/place/${encodedSearchTerm}`, '_blank');
+    window.open(`https://www.google.com/maps/place/${place.address}`, '_blank');
     handleClose();
   };
 
