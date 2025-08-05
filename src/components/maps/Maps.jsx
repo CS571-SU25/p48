@@ -86,16 +86,18 @@ function Maps() {
   return (
     <Box sx={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
       <Box sx={{ position: 'absolute', top: 90, left: '50%', transform: 'translateX(-50%)', width: { xs: 'calc(100% - 32px)', md: '95%' }, maxWidth: 1200, zIndex: 1000, pointerEvents: 'none' }}>
-        <Box sx={{ pointerEvents: 'auto', display: 'flex', alignItems: 'center' }}>
-          <SearchBar
-            value={searchTerm}
-            onInputChange={handleInputChange}
-            onFormSubmit={handleFormSubmit}
-          />
-          <MapFilter
-            selectedFilters={selectedFilters}
-            onFilterChange={handleFilterChange}
-          />
+        <Box sx={{ pointerEvents: 'auto' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <SearchBar
+              value={searchTerm}
+              onInputChange={handleInputChange}
+              onFormSubmit={handleFormSubmit}
+            />
+            <MapFilter
+              selectedFilters={selectedFilters}
+              onFilterChange={handleFilterChange}
+            />
+          </Box>
           <SearchSuggestions
             suggestions={suggestions}
             onSuggestionClick={handleSuggestionClick}
