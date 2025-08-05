@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Box } from '@mui/material';
 import SearchBar from './SearchBar';
 import SearchSuggestions from './SearchSuggestions';
+import CustomMarker from './CustomMarker';
+import { curatedPlaces } from '../../data/curatedPlaces';
 
 function ChangeView({ center, zoom }) {
   const map = useMap();
@@ -11,7 +13,7 @@ function ChangeView({ center, zoom }) {
 }
 
 function Maps() {
-  const [position, setPosition] = useState([43.07, -89.395]);
+  const [position, setPosition] = useState([43.075, -89.385]);
   const [markerInfo, setMarkerInfo] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -68,9 +70,19 @@ function Maps() {
         </Box>
       </Box>
 
-      <MapContainer center={position} zoom={14} style={{ height: "100%", width: "100%" }} scrollWheelZoom={true}>
-        <ChangeView center={position} zoom={14} />
+      <MapContainer center={position} zoom={16} style={{ height: "100%", width: "100%" }} scrollWheelZoom={true}>
+        <ChangeView center={position} zoom={16} />
         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        
+        {/* Curated places markers */}
+        {curatedPlaces.map((place) => (
+          <CustomMarker 
+            key={place.id} 
+            place={place} 
+          />
+        ))}
+        
+        {/* Search result marker */}
         {markerInfo && (
           <Marker position={markerInfo.position}>
             <Popup>{markerInfo.name}</Popup>
