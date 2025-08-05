@@ -166,6 +166,24 @@ body {
   opacity: 1 !important;
 }
 
+/* Dark mode overrides for SearchBar and ShareButton */
+[data-theme="dark"] .MuiInputBase-root {
+  color: #000000 !important;
+}
+
+[data-theme="dark"] .MuiInputBase-input {
+  color: #000000 !important;
+}
+
+[data-theme="dark"] .MuiInputBase-input::placeholder {
+  color: #666666 !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .MuiIconButton-root {
+  color: #666666 !important;
+}
+
 [data-theme="dark"] .MuiChip-root {
   background-color: #2d2d2d !important;
   color: #ffffff !important;

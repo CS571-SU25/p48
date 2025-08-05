@@ -63,7 +63,7 @@ export default function About() {
               We'd love to hear from you.
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6, textAlign: 'center', mt: 2 }}>
-              Email: hello@pinpoint.com
+              Email: example@pinpoint.com
             </Typography>
           </Paper>
         </Box>

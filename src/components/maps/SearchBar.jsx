@@ -26,12 +26,22 @@ export default function SearchBar({ value, onInputChange, onFormSubmit }) {
       }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ 
+          ml: 1, 
+          flex: 1,
+          '& .MuiInputBase-input': {
+            color: '#000000',
+          },
+          '& .MuiInputBase-input::placeholder': {
+            color: '#666666',
+            opacity: 1,
+          },
+        }}
         placeholder="Search for a place..."
         value={value}
         onChange={(e) => onInputChange(e.target.value)}
       />
-      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+      <IconButton type="submit" sx={{ p: '10px', color: '#666666' }} aria-label="search">
         <SearchIcon />
       </IconButton>
     </Paper>

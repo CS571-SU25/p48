@@ -5,6 +5,15 @@ export default defineConfig({
   plugins: [react()],
   base: '/p48/',
   build: {
-    outDir: 'docs'
+    outDir: 'docs',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  server: {
+    port: 5173,
+    host: true
   }
 })

@@ -52,21 +52,21 @@ export default function ShareButton({ place }) {
 
   return (
     <>
-      <IconButton
-        onClick={handleClick}
-        sx={{
-          position: 'absolute',
-          bottom: 8,
-          right: 56, // Position to the left of the heart button
-          backgroundColor: 'rgba(255, 255, 255, 0.7)',
-          '&:hover': {
+              <IconButton
+          onClick={handleClick}
+          sx={{
+            position: 'absolute',
+            bottom: 8,
+            right: 56, // Position to the left of the heart button
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          },
-          color: '#666',
-        }}
-      >
-        <ShareIcon />
-      </IconButton>
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+            },
+            color: '#333',
+          }}
+        >
+          <ShareIcon />
+        </IconButton>
 
       <Menu
         anchorEl={anchorEl}
