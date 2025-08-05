@@ -1,5 +1,5 @@
 import { Box, Typography, Button } from '@mui/material';
-import mapVideo from '../assets/map.mp4';
+import mapVideo from '../../assets/map.mp4';
 import { Link } from 'react-router';
 
 export default function MainPage() {
@@ -84,21 +84,38 @@ export default function MainPage() {
           </Typography>
         </Box>
 
-        <Button
-          variant="contained"
-          size="large"
-          component={Link}
-          to="/maps"
-          sx={{
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
-            color: 'rgb(0, 0, 0)',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.8)'
-            }
-          }}
-        >
-          Start
-        </Button>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+          <Button
+            variant="contained"
+            size="large"
+            component={Link}
+            to="/maps"
+            sx={{
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              color: 'rgb(0, 0, 0)',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.8)'
+              }
+            }}
+          >
+            Start
+          </Button>
+          
+          <Button
+            variant="text"
+            size="small"
+            component={Link}
+            to="/about"
+            sx={{
+              color: 'rgba(255, 255, 255, 0.8)',
+              '&:hover': {
+                color: 'rgba(255, 255, 255, 1)'
+              }
+            }}
+          >
+            About
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

@@ -37,7 +37,8 @@ export default function Header() {
 
         <Box sx={{ flexGrow: 1 }} />
         <Button component={Link} to="/maps" sx={{ color: 'text.primary' }}>Maps</Button>
-        <Button component={Link} to="/lists" sx={{ color: 'text.primary' }}>My Lists</Button>
+        <Button component={Link} to="/lists" sx={{ color: 'text.primary' }}>Favorites</Button>
+        <Button component={Link} to="/settings" sx={{ color: 'text.primary' }}>Settings</Button>
       </Toolbar>
     </AppBar>
   );

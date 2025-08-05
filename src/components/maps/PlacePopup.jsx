@@ -2,28 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Chip, IconButton, Card, CardMedia, CardContent } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShareButton from '../ShareButton';
 
 const PlacePopup = ({ place }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     // Load liked status from localStorage
-    const likedPlaces = JSON.parse(localStorage.getItem('likedPlaces') || '[]');
-    setIsLiked(likedPlaces.includes(place.id));
+    const likedPlacesData = JSON.parse(localStorage.getItem('likedPlacesData') || '[]');
+    setIsLiked(likedPlacesData.some(item => item.id === place.id));
   }, [place.id]);
 
-  const handleHeartClick = () => {
-    const likedPlaces = JSON.parse(localStorage.getItem('likedPlaces') || '[]');
+  const handleHeartClick = (event) => {
+    event.stopPropagation();
+    const likedPlacesData = JSON.parse(localStorage.getItem('likedPlacesData') || '[]');
     
     if (isLiked) {
       // Remove from liked places
-      const updatedLikedPlaces = likedPlaces.filter(id => id !== place.id);
-      localStorage.setItem('likedPlaces', JSON.stringify(updatedLikedPlaces));
+      const updatedLikedPlaces = likedPlacesData.filter(item => item.id !== place.id);
+      localStorage.setItem('likedPlacesData', JSON.stringify(updatedLikedPlaces));
       setIsLiked(false);
     } else {
-      // Add to liked places
-      const updatedLikedPlaces = [...likedPlaces, place.id];
-      localStorage.setItem('likedPlaces', JSON.stringify(updatedLikedPlaces));
+      // Add to liked places with timestamp
+      const newLikedPlace = {
+        id: place.id,
+        likedAt: Date.now()
+      };
+      const updatedLikedPlaces = [...likedPlacesData, newLikedPlace];
+      localStorage.setItem('likedPlacesData', JSON.stringify(updatedLikedPlaces));
       setIsLiked(true);
     }
   };
@@ -44,15 +50,16 @@ const PlacePopup = ({ place }) => {
           alt={place.name}
           sx={{ objectFit: 'cover' }}
         />
+        <ShareButton place={place} />
         <IconButton
           onClick={handleHeartClick}
           sx={{
             position: 'absolute',
             bottom: 8,
             right: 8,
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 1)',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
             },
             color: isLiked ? '#e91e63' : '#666',
           }}
